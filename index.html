@@ -538,7 +538,7 @@ body{cursor:none;}
 <!-- NAV -->
 <nav aria-label="Main navigation">
   <a href="#about" class="nav-btn">🎀 About</a>
-  <a href="#skills" class="nav-btn">💅 Skills</a>
+  <a href="#skills" class="nav-btn">🎯 Skills</a>
   <a href="#channels" class="nav-btn">📡 Channels</a>
   <a href="#experience" class="nav-btn">🚀 Experience</a>
   <a href="#projects" class="nav-btn">🔧 Projects</a>
@@ -562,7 +562,7 @@ body{cursor:none;}
     <div class="hero-ctas" style="display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:16px;">
       <button class="btn-pink" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">💌 Hire Me</button>
       <button class="btn-outline" onclick="dlResume()">📄 Request Resume</button>
-      <button class="btn-outline" onclick="if(typeof launchConfetti==='function')launchConfetti();else alert('Mascots loading...')" title="Launch Salesforce mascots!">🦝 Astro!</button>
+      <button class="btn-outline" onclick="launchConfetti()" title="Launch Salesforce mascots!">🦝 Astro!</button>
     </div>
   </div>
 </div>
@@ -1579,6 +1579,32 @@ if(statsSec)cO.observe(statsSec);
 // HERO TYPED
 // ════════════════════════════════════════
 var tpPhrs=['custom CloudPages &amp; AEP solutions 🌐','30% data lifecycle efficiency gains 📊','XDM schemas across 10+ business units 🗂️','DBMS tools: hours → 30 mins ⚡','multi-channel journeys: Email · SMS · Push · WhatsApp 🚀','9 Salesforce certifications including Agentforce 🤖','things SFMC said were impossible 🤩'];
+var tpIdx=0,tpCharIdx=0,tpTyping=true,tpEl=document.querySelector('.hero-typed-line');
+function typeChar(){
+  if(!tpEl)return;
+  var phrase=tpPhrs[tpIdx];
+  if(tpTyping){
+    if(tpCharIdx<phrase.length){
+      tpEl.textContent=phrase.substring(0,tpCharIdx+1);
+      tpCharIdx++;
+      setTimeout(typeChar,80);
+    }else{
+      setTimeout(function(){tpTyping=false;typeChar();},2000);
+    }
+  }else{
+    if(tpCharIdx>0){
+      tpEl.textContent=phrase.substring(0,tpCharIdx-1);
+      tpCharIdx--;
+      setTimeout(typeChar,40);
+    }else{
+      tpTyping=true;
+      tpIdx=(tpIdx+1)%tpPhrs.length;
+      setTimeout(typeChar,500);
+    }
+  }
+}
+if(tpEl)setTimeout(typeChar,1000);
+
 var tpI2=0,tpC2=0,tpD2=false;
 var tpE=document.getElementById('hero-typed');
 function typeL(){
@@ -1661,13 +1687,10 @@ function animateMascots() {
 }
 
 // FIRE ON EVERY PAGE LOAD — no sessionStorage, fires on refresh too
-// Fire mascots on BOTH events for reliability
-if (document.readyState === 'complete') {
-  setTimeout(launchConfetti, 100);
-} else {
-  window.addEventListener('DOMContentLoaded', function() { setTimeout(launchConfetti, 200); });
-  window.addEventListener('load', function() { setTimeout(launchConfetti, 100); });
-}
+// Launch mascots immediately when page loads
+window.addEventListener('load', function() {
+  setTimeout(launchConfetti, 300);
+});
 
 
 // ════════════════════════════════════════
