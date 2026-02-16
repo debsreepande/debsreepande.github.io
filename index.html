@@ -1,15 +1,12 @@
 <!DOCTYPE html>
+<!-- Build: 1771282950 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ===== HIGH SEO META ===== -->
-<title>Debsree Pande | MarTech Implementation Lead | SFMC Expert | Marketing Automation Consultant</title>
-  <!-- v1771280616 -->
+<title>Debsree Pande | MarTech Implementation Lead | SFMC Expert | Marketing Automation Consultant - v1771282950</title>
 <meta name="description" content="Debsree Pande — 5-Star SFMC Trailblazer & MarTech Implementation Lead with 10+ years building marketing automation ecosystems. Expert in Salesforce Marketing Cloud, Adobe AEP/AJO, Braze, Klaviyo, AMPscript, SSJS, Journey Builder, SMS, Push Notifications, WhatsApp, Twilio, Abandoned Cart/Browse, and cross-platform migrations.">
 <meta name="keywords" content="Debsree Pande, MarTech, SFMC, Salesforce Marketing Cloud, AMPscript, SSJS, Journey Builder, Email Marketing, SMS Marketing, Push Notifications, WhatsApp Marketing, Twilio, Braze, Klaviyo, Bloomreach, Adobe AEP, Adobe Journey Optimizer, AJO, Marketing Automation, CloudPages, Data Extensions, Abandoned Cart, Abandoned Browse, Web SDK, Marketing Consultant, SFMC Trailblazer, MarTech Engineer, Marketing Technology, Vanguard Financial, Email Deliverability, Segmentation, Personalization">
 <meta name="author" content="Debsree Pande">
@@ -598,7 +595,7 @@ body{cursor:none;}
 <!-- SKILLS -->
 <section id="skills" aria-label="Technical skills and expertise">
   <div class="card">
-    <h2 class="section-title">🎯 Skills & Tech Stack</h2>
+    <h2 class="section-title">💅 Skills & Tech Stack</h2>
     <!-- SKILL BARS -->
     <div id="skill-bars-wrap">
       <div class="skill-bar-group"><div class="skill-bar-label"><span>Salesforce Marketing Cloud</span><span>98%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="98"></div></div></div>
@@ -1085,7 +1082,7 @@ body{cursor:none;}
     <div class="contact-row">
       <span class="contact-btn" style="cursor:pointer;background:var(--hot-pink);color:#fff;border-color:var(--hot-pink);"
         onclick="var e='debsreepande16'+'@'+'gmail.com';window.open('mailto:'+e,'_blank')">
-        📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="395d5c5b4a4b5c5c4958575d5c080f795e54585055175a5654">[email&#160;protected]</a>
+        📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="37535255444552524756595352060177505a565e5b1954585a">[email&#160;protected]</a>
       </span>
       <a class="contact-btn" href="https://www.linkedin.com/in/debsreepande/" target="_blank" rel="noopener">💼 Debsree Pande | LinkedIn</a>
       <a class="contact-btn" href="https://www.salesforce.com/trailblazer/debsreepande" target="_blank" rel="noopener">⭐ Trailblazer Profile</a>
@@ -1579,7 +1576,8 @@ if(statsSec)cO.observe(statsSec);
 // HERO TYPED
 // ════════════════════════════════════════
 var tpPhrs=['custom CloudPages &amp; AEP solutions 🌐','30% data lifecycle efficiency gains 📊','XDM schemas across 10+ business units 🗂️','DBMS tools: hours → 30 mins ⚡','multi-channel journeys: Email · SMS · Push · WhatsApp 🚀','9 Salesforce certifications including Agentforce 🤖','things SFMC said were impossible 🤩'];
-var tpIdx=0,tpCharIdx=0,tpTyping=true,tpEl=document.querySelector('.hero-typed-line');
+var tpIdx=0,tpCharIdx=0,tpTyping=true,tpEl=null;
+function initTyping(){tpEl=document.querySelector('.hero-typed-line');if(tpEl)setTimeout(typeChar,1000);}
 function typeChar(){
   if(!tpEl)return;
   var phrase=tpPhrs[tpIdx];
@@ -1588,22 +1586,16 @@ function typeChar(){
       tpEl.textContent=phrase.substring(0,tpCharIdx+1);
       tpCharIdx++;
       setTimeout(typeChar,80);
-    }else{
-      setTimeout(function(){tpTyping=false;typeChar();},2000);
-    }
+    }else{setTimeout(function(){tpTyping=false;typeChar();},2000);}
   }else{
     if(tpCharIdx>0){
       tpEl.textContent=phrase.substring(0,tpCharIdx-1);
       tpCharIdx--;
       setTimeout(typeChar,40);
-    }else{
-      tpTyping=true;
-      tpIdx=(tpIdx+1)%tpPhrs.length;
-      setTimeout(typeChar,500);
-    }
+    }else{tpTyping=true;tpIdx=(tpIdx+1)%tpPhrs.length;setTimeout(typeChar,500);}
   }
 }
-if(tpEl)setTimeout(typeChar,1000);
+window.addEventListener('DOMContentLoaded',initTyping);
 
 var tpI2=0,tpC2=0,tpD2=false;
 var tpE=document.getElementById('hero-typed');
@@ -1687,10 +1679,7 @@ function animateMascots() {
 }
 
 // FIRE ON EVERY PAGE LOAD — no sessionStorage, fires on refresh too
-// Launch mascots immediately when page loads
-window.addEventListener('load', function() {
-  setTimeout(launchConfetti, 300);
-});
+window.addEventListener('load', function() { setTimeout(launchConfetti, 600); });
 
 
 // ════════════════════════════════════════
