@@ -1,4 +1,6 @@
+# robots.txt for debsreepande.github.io
 User-agent: *
 Allow: /
 
-Sitemap: https://YOUR-SITE-NAME.netlify.app/sitemap.xml
+# Sitemap location
+Sitemap: https://debsreepande.github.io/sitemap.xml
