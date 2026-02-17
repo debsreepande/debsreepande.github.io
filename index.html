@@ -41,6 +41,7 @@
   --teal-500: #14B8A6;
   --teal-400: #2DD4BF;
   --teal-300: #5EEAD4;
+  --teal-200: #99F6E4;
   --teal-100: #CCFBF1;
   --teal-50: #F0FDFA;
   
@@ -49,9 +50,12 @@
   --gold: #F59E0B;
   --gold-light: #FCD34D;
   
+  --sf-blue: #00A1E0;
+  
   --dark: #0F172A;
   --gray-900: #1E293B;
   --gray-700: #334155;
+  --gray-600: #475569;
   --gray-500: #64748B;
   --gray-300: #CBD5E1;
   --gray-100: #F1F5F9;
@@ -71,6 +75,40 @@ body {
   color: var(--dark);
   overflow-x: hidden;
   line-height: 1.6;
+}
+
+/* Floating Astros */
+.floating-astros {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.astro {
+  position: absolute;
+  font-size: 1.8rem;
+  opacity: 0.6;
+  animation: floatAstro 15s ease-in-out infinite;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  cursor: default;
+}
+
+.astro:nth-child(1) { top: 8%; left: 5%; animation-delay: 0s; }
+.astro:nth-child(2) { top: 20%; right: 8%; animation-delay: -2s; }
+.astro:nth-child(3) { top: 45%; left: 3%; animation-delay: -4s; }
+.astro:nth-child(4) { top: 65%; right: 5%; animation-delay: -6s; }
+.astro:nth-child(5) { top: 85%; left: 8%; animation-delay: -8s; }
+.astro:nth-child(6) { top: 30%; left: 92%; animation-delay: -10s; }
+.astro:nth-child(7) { top: 75%; left: 95%; animation-delay: -12s; }
+.astro:nth-child(8) { top: 55%; left: 2%; animation-delay: -3s; }
+
+@keyframes floatAstro {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-20px) rotate(5deg); }
+  50% { transform: translateY(10px) rotate(-3deg); }
+  75% { transform: translateY(-15px) rotate(3deg); }
 }
 
 /* Animated Background Shapes */
@@ -224,7 +262,35 @@ nav {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--gray-700);
+  margin-bottom: 8px;
+}
+
+/* Typing Animation */
+.hero-typed {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-600);
   margin-bottom: 20px;
+  min-height: 28px;
+}
+
+.hero-typed span {
+  color: var(--teal-600);
+  font-weight: 700;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--teal-600);
+  margin-left: 2px;
+  animation: blink 0.8s step-end infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
 
 .badge-row {
@@ -406,7 +472,79 @@ section {
   font-style: italic;
 }
 
-/* Skills */
+/* Animated Skill Bars */
+.skill-bars-container {
+  margin-bottom: 30px;
+}
+
+.skill-bar-item {
+  margin-bottom: 20px;
+}
+
+.skill-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.skill-bar-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gray-700);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-bar-name .skill-icon {
+  font-size: 1.1rem;
+}
+
+.skill-bar-percent {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--teal-600);
+}
+
+.skill-bar-track {
+  height: 12px;
+  background: var(--teal-100);
+  border-radius: 50px;
+  overflow: hidden;
+  border: 1px solid var(--teal-200);
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 50px;
+  background: linear-gradient(90deg, var(--teal-500), var(--teal-400));
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Skills Pills (for categories) */
+.skills-section {
+  margin-top: 30px;
+}
+
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
@@ -752,6 +890,52 @@ section {
   flex-shrink: 0;
 }
 
+/* Resume Request Button - Special Style */
+.resume-request-section {
+  text-align: center;
+  margin-top: 30px;
+  padding: 30px;
+  background: linear-gradient(135deg, var(--teal-50), var(--white));
+  border-radius: 20px;
+  border: 2px dashed var(--teal-300);
+}
+
+.resume-request-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--teal-700);
+  margin-bottom: 8px;
+}
+
+.resume-request-subtitle {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  margin-bottom: 20px;
+}
+
+.btn-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px var(--glow-coral);
+}
+
+.btn-resume:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 30px var(--glow-coral);
+}
+
 /* Contact Section */
 .contact-intro {
   text-align: center;
@@ -887,10 +1071,27 @@ footer a:hover {
   .testimonials-grid {
     grid-template-columns: 1fr;
   }
+  
+  .astro {
+    font-size: 1.4rem;
+    opacity: 0.4;
+  }
 }
 </style>
 </head>
 <body>
+
+<!-- Floating Salesforce Mascots (Astros) -->
+<div class="floating-astros">
+  <div class="astro" title="Astro - Salesforce">🦝</div>
+  <div class="astro" title="Codey the Bear">🐻</div>
+  <div class="astro" title="Einstein AI">🧠</div>
+  <div class="astro" title="Cloudy">☁️</div>
+  <div class="astro" title="Appy">🐱</div>
+  <div class="astro" title="Ruth the Elephant">🐘</div>
+  <div class="astro" title="Brandy">🦊</div>
+  <div class="astro" title="Koa">🐨</div>
+</div>
 
 <div class="bg-shapes">
   <div class="shape shape-1"></div>
@@ -916,6 +1117,10 @@ footer a:hover {
     <h1 class="hero-name">Debsree Pande</h1>
     <p class="hero-title">MarTech Implementation Lead 🚀</p>
     
+    <div class="hero-typed">
+      I build <span id="typed-text"></span><span class="typing-cursor"></span>
+    </div>
+    
     <div class="badge-row">
       <span class="badge badge-primary">⭐ 5-Star SFMC Trailblazer</span>
       <span class="badge badge-secondary">10+ Years Experience</span>
@@ -924,7 +1129,7 @@ footer a:hover {
     
     <div class="hero-ctas">
       <a href="#contact" class="btn btn-primary">💌 Let's Connect</a>
-      <a href="mailto:debsreepande16@gmail.com?subject=Resume%20Request%20-%20Debsree%20Pande" class="btn btn-outline">📄 Request Resume</a>
+      <button class="btn btn-outline" onclick="openResumeModal()">📄 Get Resume</button>
       <a href="https://www.linkedin.com/in/debsreepande/" target="_blank" class="btn btn-outline">💼 LinkedIn</a>
     </div>
   </div>
@@ -981,58 +1186,134 @@ footer a:hover {
   <div class="card reveal">
     <h2 class="section-title">Skills & Tech Stack</h2>
     
-    <div class="skills-grid">
-      <div class="skill-category">🌐 MarTech Platforms</div>
-      <span class="skill-pill">Salesforce Marketing Cloud</span>
-      <span class="skill-pill">Adobe AEP</span>
-      <span class="skill-pill">Adobe Journey Optimizer</span>
-      <span class="skill-pill">Braze</span>
-      <span class="skill-pill">Klaviyo</span>
-      <span class="skill-pill">Bloomreach</span>
-      <span class="skill-pill">Marketo</span>
-      <span class="skill-pill">Adobe Real-Time CDP</span>
-      <span class="skill-pill">Agentforce</span>
-      <span class="skill-pill">HubSpot</span>
-      <span class="skill-pill">Iterable</span>
+    <!-- Animated Skill Bars -->
+    <div class="skill-bars-container">
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name"><span class="skill-icon">☁️</span> Salesforce Marketing Cloud</span>
+          <span class="skill-bar-percent">98%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="98"></div>
+        </div>
+      </div>
       
-      <div class="skill-category">💻 Languages & Scripting</div>
-      <span class="skill-pill">AMPscript</span>
-      <span class="skill-pill">Server-Side JavaScript (SSJS)</span>
-      <span class="skill-pill">SQL</span>
-      <span class="skill-pill">JavaScript</span>
-      <span class="skill-pill">HTML5</span>
-      <span class="skill-pill">CSS3</span>
-      <span class="skill-pill">Python</span>
-      <span class="skill-pill">Liquid (Braze)</span>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name"><span class="skill-icon">💻</span> AMPscript & SSJS</span>
+          <span class="skill-bar-percent">95%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="95"></div>
+        </div>
+      </div>
       
-      <div class="skill-category">🔧 SFMC Core</div>
-      <span class="skill-pill">Journey Builder</span>
-      <span class="skill-pill">Email Studio</span>
-      <span class="skill-pill">CloudPages</span>
-      <span class="skill-pill">Automation Studio</span>
-      <span class="skill-pill">Data Extensions</span>
-      <span class="skill-pill">Mobile Studio</span>
-      <span class="skill-pill">MobileConnect (SMS)</span>
-      <span class="skill-pill">MobilePush</span>
-      <span class="skill-pill">Interaction Studio</span>
-      <span class="skill-pill">Datorama</span>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name"><span class="skill-icon">🚀</span> Journey Builder & Automation</span>
+          <span class="skill-bar-percent">97%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="97"></div>
+        </div>
+      </div>
       
-      <div class="skill-category">📡 Messaging & Integrations</div>
-      <span class="skill-pill">Twilio (SMS/Voice)</span>
-      <span class="skill-pill">WhatsApp Business API</span>
-      <span class="skill-pill">Web SDK</span>
-      <span class="skill-pill">REST API</span>
-      <span class="skill-pill">SOAP API</span>
-      <span class="skill-pill">Postman</span>
-      <span class="skill-pill">Bruno</span>
-      <span class="skill-pill">Webhook Integration</span>
-      <span class="skill-pill">GTM</span>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name"><span class="skill-icon">🔴</span> Adobe AEP / AJO</span>
+          <span class="skill-bar-percent">88%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="88"></div>
+        </div>
+      </div>
       
-      <div class="skill-category">📊 Data & Analytics</div>
-      <span class="skill-pill">Segmentation & Audiences</span>
-      <span class="skill-pill">A/B Testing</span>
-      <span class="skill-pill">Email Deliverability</span>
-      <span class="skill-pill">IP Warming</span>
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name"><span class="skill-icon">🎯</span> Braze / Klaviyo / Bloomreach</span>
+          <span class="skill-bar-percent">85%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="85"></div>
+        </div>
+      </div>
+      
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name"><span class="skill-icon">🗄️</span> SQL & Data Architecture</span>
+          <span class="skill-bar-percent">90%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="90"></div>
+        </div>
+      </div>
+      
+      <div class="skill-bar-item">
+        <div class="skill-bar-header">
+          <span class="skill-bar-name"><span class="skill-icon">🔗</span> REST / SOAP API</span>
+          <span class="skill-bar-percent">92%</span>
+        </div>
+        <div class="skill-bar-track">
+          <div class="skill-bar-fill" data-width="92"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Skills Pills by Category -->
+    <div class="skills-section">
+      <div class="skills-grid">
+        <div class="skill-category">🌐 MarTech Platforms</div>
+        <span class="skill-pill">Salesforce Marketing Cloud</span>
+        <span class="skill-pill">Adobe AEP</span>
+        <span class="skill-pill">Adobe Journey Optimizer</span>
+        <span class="skill-pill">Braze</span>
+        <span class="skill-pill">Klaviyo</span>
+        <span class="skill-pill">Bloomreach</span>
+        <span class="skill-pill">Marketo</span>
+        <span class="skill-pill">Adobe Real-Time CDP</span>
+        <span class="skill-pill">Agentforce</span>
+        <span class="skill-pill">HubSpot</span>
+        <span class="skill-pill">Iterable</span>
+        
+        <div class="skill-category">💻 Languages & Scripting</div>
+        <span class="skill-pill">AMPscript</span>
+        <span class="skill-pill">Server-Side JavaScript (SSJS)</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">HTML5</span>
+        <span class="skill-pill">CSS3</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">Liquid (Braze)</span>
+        
+        <div class="skill-category">🔧 SFMC Core</div>
+        <span class="skill-pill">Journey Builder</span>
+        <span class="skill-pill">Email Studio</span>
+        <span class="skill-pill">CloudPages</span>
+        <span class="skill-pill">Automation Studio</span>
+        <span class="skill-pill">Data Extensions</span>
+        <span class="skill-pill">Mobile Studio</span>
+        <span class="skill-pill">MobileConnect (SMS)</span>
+        <span class="skill-pill">MobilePush</span>
+        <span class="skill-pill">Interaction Studio</span>
+        <span class="skill-pill">Datorama</span>
+        
+        <div class="skill-category">📡 Messaging & Integrations</div>
+        <span class="skill-pill">Twilio (SMS/Voice)</span>
+        <span class="skill-pill">WhatsApp Business API</span>
+        <span class="skill-pill">Web SDK</span>
+        <span class="skill-pill">REST API</span>
+        <span class="skill-pill">SOAP API</span>
+        <span class="skill-pill">Postman</span>
+        <span class="skill-pill">Bruno</span>
+        <span class="skill-pill">Webhook Integration</span>
+        <span class="skill-pill">GTM</span>
+        
+        <div class="skill-category">📊 Data & Analytics</div>
+        <span class="skill-pill">Segmentation & Audiences</span>
+        <span class="skill-pill">A/B Testing</span>
+        <span class="skill-pill">Email Deliverability</span>
+        <span class="skill-pill">IP Warming</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1293,8 +1574,11 @@ footer a:hover {
       </div>
     </div>
     
-    <div style="text-align: center; margin-top: 30px;">
-      <a href="mailto:debsreepande16@gmail.com?subject=Resume%20Request%20-%20Debsree%20Pande&body=Hi%20Debsree%2C%20I%20visited%20your%20portfolio%20and%20would%20love%20to%20receive%20your%20resume." class="btn btn-primary">📄 Request Full Resume</a>
+    <!-- Smart Resume Request -->
+    <div class="resume-request-section">
+      <div class="resume-request-title">📄 Want my full resume?</div>
+      <div class="resume-request-subtitle">Drop your email and I'll send it over personally!</div>
+      <button class="btn-resume" onclick="openResumeModal()">🦝 Request Resume</button>
     </div>
   </div>
 </section>
@@ -1333,7 +1617,85 @@ footer a:hover {
   <p>Built with ☕ by Debsree Pande · <a href="https://www.linkedin.com/in/debsreepande/">Connect on LinkedIn</a></p>
 </footer>
 
+<!-- Resume Request Modal -->
+<div id="resumeModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center; backdrop-filter:blur(4px);">
+  <div style="background:white; border-radius:24px; padding:40px; max-width:420px; margin:20px; box-shadow:0 20px 60px rgba(0,0,0,0.3); text-align:center;">
+    <div style="font-size:3rem; margin-bottom:16px;">🦝</div>
+    <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; color:#0F766E; margin-bottom:8px;">Request My Resume</h3>
+    <p style="color:#64748B; font-size:0.9rem; margin-bottom:24px;">I'd love to share my experience with you! Click below to send a quick email request.</p>
+    
+    <a href="mailto:debsreepande16@gmail.com?subject=Resume%20Request%20-%20Found%20You%20on%20Your%20Portfolio!&body=Hi%20Debsree%2C%0A%0AI%20visited%20your%20portfolio%20and%20I'm%20impressed%20by%20your%20MarTech%20expertise!%20I'd%20love%20to%20receive%20your%20resume.%0A%0AMy%20name%3A%20%0ACompany%3A%20%0ARole%20I'm%20hiring%20for%20%2F%20Reason%20for%20interest%3A%20%0A%0AThank%20you!" 
+       style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; background:linear-gradient(135deg,#0D9488,#14B8A6); color:white; border-radius:50px; font-weight:700; text-decoration:none; font-size:0.95rem; box-shadow:0 4px 20px rgba(13,148,136,0.3);">
+      📧 Send Email Request
+    </a>
+    
+    <p style="margin-top:20px; font-size:0.8rem; color:#94A3B8;">Or email me directly at debsreepande16@gmail.com</p>
+    
+    <button onclick="closeResumeModal()" style="margin-top:16px; background:none; border:2px solid #CBD5E1; border-radius:50px; padding:10px 24px; color:#64748B; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif;">Close</button>
+  </div>
+</div>
+
 <script>
+// Typing Animation
+const typedText = document.getElementById('typed-text');
+const phrases = [
+  'customer journeys',
+  'CloudPages tools',
+  'marketing automations',
+  'API integrations',
+  'multi-channel campaigns',
+  'abandoned cart flows',
+  'data pipelines',
+  'custom SFMC solutions'
+];
+
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingSpeed = 80;
+
+function typeEffect() {
+  const currentPhrase = phrases[phraseIndex];
+  
+  if (isDeleting) {
+    typedText.textContent = currentPhrase.substring(0, charIndex - 1);
+    charIndex--;
+    typingSpeed = 40;
+  } else {
+    typedText.textContent = currentPhrase.substring(0, charIndex + 1);
+    charIndex++;
+    typingSpeed = 80;
+  }
+  
+  if (!isDeleting && charIndex === currentPhrase.length) {
+    isDeleting = true;
+    typingSpeed = 2000; // Pause at end
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    typingSpeed = 300; // Pause before next word
+  }
+  
+  setTimeout(typeEffect, typingSpeed);
+}
+
+// Start typing after page load
+setTimeout(typeEffect, 1000);
+
+// Resume Modal
+function openResumeModal() {
+  document.getElementById('resumeModal').style.display = 'flex';
+}
+
+function closeResumeModal() {
+  document.getElementById('resumeModal').style.display = 'none';
+}
+
+// Close modal on background click
+document.getElementById('resumeModal').addEventListener('click', function(e) {
+  if (e.target === this) closeResumeModal();
+});
+
 // Back to Top Button
 const backToTop = document.getElementById('backToTop');
 window.addEventListener('scroll', () => {
@@ -1380,6 +1742,20 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 statNums.forEach(num => counterObserver.observe(num));
+
+// Animated Skill Bars
+const skillBars = document.querySelectorAll('.skill-bar-fill[data-width]');
+const skillBarObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const width = entry.target.dataset.width;
+      entry.target.style.width = width + '%';
+      skillBarObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+skillBars.forEach(bar => skillBarObserver.observe(bar));
 
 // Active Nav on Scroll
 const sections = document.querySelectorAll('section[id]');
